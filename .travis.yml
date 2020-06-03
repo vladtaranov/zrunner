@@ -11,22 +11,17 @@ cache: npm
 install:
   - npm ci
 
-script:
+before_deploy:
   - npm run build
 
 deploy:
-  - provider: releases
-    api_key: $GITHUB_TOKEN
-    file_glob: true
-    file: dist/zRunner/**/*
-    skip_cleanup: true
-    on:
-      tags: true
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  local_dir: dist/showcase
+  on:
+    branch: master
 
-  - provider: pages
-    skip_cleanup: true
-    github_token: $GITHUB_TOKEN
-    keep_history: true
-    local_dir: dist/showcase
-    on:
-      branch: master
+after_deploy:
+  - npm run publish
