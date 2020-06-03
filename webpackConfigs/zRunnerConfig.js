@@ -15,14 +15,12 @@ module.exports = (env) => {
     output: {
       path: Path.join(process.cwd(), 'dist', PATHS.zRunner),
       filename: isProduction
-        ? `${PATHS.zRunner}-[git-revision-version].js`
+        ? `${PATHS.zRunner}-[hash:5].js`
         : undefined
     },
     plugins: [
       new CleanWebpackPlugin(),
-      new GitRevisionWebpackPlugin({
-        lightweightTags: true
-      })
+      new GitRevisionWebpackPlugin()
     ],
     module: {
       rules: [
