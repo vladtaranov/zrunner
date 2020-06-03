@@ -11,7 +11,7 @@ cache: npm
 install:
   - npm ci
 
-script:
+before_deploy:
   - npm run build
 
 deploy:
@@ -26,7 +26,7 @@ deploy:
   - provider: releases
     api_key: $GITHUB_TOKEN
     file_glob: true
-    file: dist/zRunner
+    file: dist/zRunner/**/*
     skip_cleanup: true
     on:
       tags: false
