@@ -1,5 +1,6 @@
 const Path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const GitRevisionWebpackPlugin = require('git-revision-webpack-plugin');
 const PATHS = require('./paths');
 
 module.exports = (env) => {
@@ -14,11 +15,14 @@ module.exports = (env) => {
     output: {
       path: Path.join(process.cwd(), 'dist', PATHS.zRunner),
       filename: isProduction
-        ? `${PATHS.zRunner}-[hash:5].js`
+        ? `${PATHS.zRunner}-[git-revision-version].js`
         : undefined
     },
     plugins: [
-      new CleanWebpackPlugin()
+      new CleanWebpackPlugin(),
+      new GitRevisionWebpackPlugin({
+        lightweightTags: true
+      })
     ],
     module: {
       rules: [
