@@ -11,7 +11,7 @@ cache: npm
 install:
   - npm ci
 
-before_deploy:
+script:
   - npm run build
 
 deploy:
