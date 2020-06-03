@@ -1,9 +1,9 @@
-const zRunnerConfig = require('./webpackConfigs/zRunnerConfig');
 const showcaseConfig = require('./webpackConfigs/showcaseConfig');
+const zRunnerConfig = require('./webpackConfigs/zRunnerConfig');
 
 module.exports = (env = {}) => {
   return [
-    zRunnerConfig(env),
-    showcaseConfig(env)
+    showcaseConfig(env),
+    zRunnerConfig(env)
   ];
 };
