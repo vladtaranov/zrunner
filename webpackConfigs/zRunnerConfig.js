@@ -7,7 +7,9 @@ module.exports = (env) => {
   const { mode = 'production' } = env;
   const isProduction = mode === 'production';
   const isDevelopment = mode === 'development';
-  const currentVersion = JSON.stringify(new GitRevisionWebpackPlugin().version());
+  const currentVersion =
+    JSON.stringify(new GitRevisionWebpackPlugin().version())
+      .split('"')[1];
 
   return {
     mode: isDevelopment ? 'development' : 'production',
@@ -16,7 +18,7 @@ module.exports = (env) => {
     output: {
       path: Path.join(process.cwd(), 'dist', PATHS.zRunner),
       filename: isProduction
-        ? `${PATHS.zRunner}-[${currentVersion}].js`
+        ? `${PATHS.zRunner}-${currentVersion}.js`
         : undefined
     },
     plugins: [

@@ -15,14 +15,6 @@ script:
   - npm run build
 
 deploy:
-  - provider: pages
-    skip_cleanup: true
-    github_token: $GITHUB_TOKEN
-    keep_history: true
-    local_dir: dist/showcase
-    on:
-      branch: master
-
   - provider: releases
     api_key: $GITHUB_TOKEN
     file_glob: true
@@ -30,3 +22,11 @@ deploy:
     skip_cleanup: true
     on:
       tags: true
+
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    keep_history: true
+    local_dir: dist/showcase
+    on:
+      branch: master
