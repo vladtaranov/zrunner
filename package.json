@@ -4,7 +4,6 @@
   "description": "",
   "scripts": {
     "watch": "webpack-dev-server --env.mode=development",
-    "test": "jest --coverage",
     "build": "webpack --env.mode=production"
   },
   "dependencies": {
