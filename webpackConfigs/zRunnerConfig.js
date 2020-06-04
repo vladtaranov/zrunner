@@ -13,7 +13,7 @@ module.exports = (env) => {
     entry: `./${PATHS.dev}/${PATHS.zRunner}/index.js`,
     output: {
       path: Path.join(process.cwd(), 'dist', PATHS.zRunner),
-      filename: `${PATHS.zRunner}.js`
+      filename: 'zRunner.js'
     },
     plugins: [
       new CleanWebpackPlugin()

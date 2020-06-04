@@ -2,6 +2,6 @@ module.exports = {
   dev: 'src',
   prod: 'dist',
   assets: 'assets',
-  zRunner: 'zRunner',
+  zRunner: 'zrunner',
   showcase: 'showcase'
 };

@@ -28,11 +28,22 @@ module.exports = (env) => {
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-        template: `./${PATHS.dev}/${PATHS.showcase}/index.html`
+        template: `./${PATHS.dev}/${PATHS.showcase}/index.pug`
       })
     ],
     module: {
       rules: [
+
+        // Loading Pug
+        {
+          test: /\.pug$/,
+          use: [
+            'html-loader',
+            'pug-html-loader'
+          ]
+        },
+
+        // Loading JS
         {
           test: /\.js$/,
           exclude: /node_modules/,
