@@ -16,6 +16,7 @@
     "@babel/core": "^7.10.2",
     "@babel/node": "^7.10.1",
     "@babel/preset-env": "^7.9.5",
+    "@types/jquery": "^3.3.38",
     "autoprefixer": "^9.7.6",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
@@ -45,6 +46,8 @@
     "stylelint": "^13.3.2",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.0.0",
+    "ts-loader": "^7.0.5",
+    "typescript": "^3.9.5",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"

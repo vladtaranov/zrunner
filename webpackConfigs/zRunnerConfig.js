@@ -10,7 +10,7 @@ module.exports = (env) => {
   return {
     mode: isDevelopment ? 'development' : 'production',
     devtool: isDevelopment && 'inline-source-map',
-    entry: `./${PATHS.dev}/${PATHS.zRunner}/index.js`,
+    entry: `./${PATHS.dev}/${PATHS.zRunner}/index.ts`,
     output: {
       path: Path.join(process.cwd(), 'dist', PATHS.zRunner),
       filename: 'zRunner.js'
@@ -20,10 +20,15 @@ module.exports = (env) => {
     ],
     module: {
       rules: [
+
+        // Loading Typescript
         {
-          test: /\.js$/,
+          test: /\.ts$/,
           exclude: /node_modules/,
-          use: 'babel-loader'
+          use: [
+            'babel-loader',
+            'ts-loader'
+          ]
         }
       ]
     }

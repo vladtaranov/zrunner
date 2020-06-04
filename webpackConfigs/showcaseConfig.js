@@ -11,7 +11,7 @@ module.exports = (env) => {
   return {
     mode: isDevelopment ? 'development' : 'production',
     devtool: isDevelopment ? 'inline-source-map' : 'source-map',
-    entry: `./${PATHS.dev}/${PATHS.showcase}/index.js`,
+    entry: `./${PATHS.dev}/${PATHS.showcase}/index.ts`,
     output: {
       path: Path.join(process.cwd(), 'dist', PATHS.showcase),
       filename: isProduction
@@ -43,11 +43,14 @@ module.exports = (env) => {
           ]
         },
 
-        // Loading JS
+        // Loading Typescript
         {
-          test: /\.js$/,
+          test: /\.ts$/,
           exclude: /node_modules/,
-          use: 'babel-loader'
+          use: [
+            'babel-loader',
+            'ts-loader'
+          ]
         }
       ]
     }
