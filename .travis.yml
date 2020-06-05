@@ -11,7 +11,11 @@ cache: npm
 install:
   - npm ci
 
-before_deploy:
+script:
+  - npm run test
+
+after_success:
+  - cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
   - npm run build
 
 deploy:
