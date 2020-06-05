@@ -3,7 +3,9 @@ interface JQuery {
 }
 
 interface zRunnerOptions {
-    type?: string
+  min: number,
+  max: number,
+  step: number
 }
 
 (function ($) {
