@@ -1,4 +1,4 @@
-import Observer from './observer';
+import Observer from '../observer';
 
 describe('Observer', () => {
   const observer: Observer = new Observer();
