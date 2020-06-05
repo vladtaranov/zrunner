@@ -2,10 +2,11 @@ import Observer from '../observer';
 
 describe('Observer', () => {
   const observer: Observer = new Observer();
-  const event: () => void = jest.fn();
+  const event = jest.fn();
 
   beforeEach(() => {
     observer.observers = [];
+    event.mockClear();
   });
 
   it('Subscribe new event', () => {
@@ -44,6 +45,6 @@ describe('Observer', () => {
   it('Trigger event, which has been not subscribed', () => {
     const response: boolean = observer.trigger();
     expect(response).toBeFalsy();
-    expect(event).toHaveBeenCalledTimes(1);
+    expect(event).toHaveBeenCalledTimes(0);
   });
 });
