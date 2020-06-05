@@ -7,16 +7,20 @@
       "es2015",
       "es2016"
     ],
-    "jsx": "preserve",
     "target": "es2016",
     "module": "es2015",
     "moduleResolution": "node",
     "noImplicitAny": true,
+    "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "removeComments": false,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "skipLibCheck": true
-  }
+    "skipLibCheck": true,
+    "strictNullChecks": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

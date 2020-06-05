@@ -1,5 +1,14 @@
+interface JQuery {
+    zRunner(): JQuery
+}
+
+interface zRunnerOptions {
+    type?: string
+}
+
 (function ($) {
-    (<any>$.fn).zRunner = function () {
-        return this.css('background', 'red');
-    }
-})(jQuery);
+  $.fn.zRunner = function (options?: zRunnerOptions) {
+    console.log(options);
+    return this.css('background', 'red');
+  }
+})($);

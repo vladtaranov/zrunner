@@ -1,8 +1,4 @@
-import jQuery from 'jquery';
-console.log('typescipt!!');
-
-(<any>window).jQuery = jQuery;
-(<any>window).$ = (<any>window).jQuery;
+import $ from 'jquery';
 require('../zrunner/index.ts');
 
-(<any>$('.js__runner-sample')).zRunner().css('color', 'yellow');
+$('.js__runner-sample').css('color', 'yellow');
