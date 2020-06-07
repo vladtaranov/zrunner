@@ -1,24 +1,27 @@
-interface Model {
-  min: number,
-  max: number,
-  step: number
-}
+import zRunner from '../../../types/zRunnerTypes';
 
-class Model {
-  constructor (options: zRunnerOptions) {
-    this.min = options.min;
-    this.max = options.max;
-    this.step = options.step;
+class Model implements zRunner.Model {
+  value: number;
+
+  constructor (options: zRunner.Options) {
+    this.value = options.value;
   }
 
-  setStep (step: number): boolean {
-    if (step < 1) return false;
-    this.step = step;
+  setValue (value: number): boolean {
+    if (value < 1) return false;
+    this.value = value;
     return true;
   }
 
-  getStep (): number {
-    return this.step;
+  getValue (): number {
+    return this.value;
+  }
+
+  getPublicMethods (): zRunner.PublicMethods {
+    return {
+      setValue: this.setValue,
+      getValue: this.getValue
+    };
   }
 }
 

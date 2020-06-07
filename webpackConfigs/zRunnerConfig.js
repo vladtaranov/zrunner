@@ -15,6 +15,9 @@ module.exports = (env) => {
       path: Path.join(process.cwd(), 'dist', PATHS.zRunner),
       filename: 'zRunner.js'
     },
+    resolve: {
+      extensions: ['.ts', '.js', '.json']
+    },
     plugins: [
       new CleanWebpackPlugin()
     ],

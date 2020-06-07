@@ -25,6 +25,9 @@ module.exports = (env) => {
       compress: true,
       open: true
     },
+    resolve: {
+      extensions: ['.ts', '.js', '.json']
+    },
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
