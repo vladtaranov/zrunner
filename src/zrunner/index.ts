@@ -1,5 +1,6 @@
 import zRunner from '../../types/zRunnerTypes';
 import makeInstance from './makeInstance';
+import './style';
 
 (function ($) {
   $.fn.zRunner = function (...args) {

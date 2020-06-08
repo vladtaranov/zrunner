@@ -9,6 +9,25 @@ module.exports = (env) => {
   const isProduction = mode === 'production';
   const isDevelopment = mode === 'development';
 
+  const getPlugins = () => {
+    const plugin = [
+      new CleanWebpackPlugin(),
+      new HtmlWebpackPlugin({
+        template: `./${PATHS.dev}/${PATHS.showcase}/pug/main.pug`
+      })
+    ];
+
+    if (isProduction) {
+      plugin.push(
+        new MiniCssExtractPlugin({
+          filename: `./${PATHS.assets}/style/style-[hash:5].css`
+        })
+      );
+    }
+
+    return plugin;
+  };
+
   const getStyleLoaders = () => {
     return [
       isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
@@ -44,14 +63,19 @@ module.exports = (env) => {
     resolve: {
       extensions: ['.ts', '.js', '.json']
     },
-    plugins: [
-      new CleanWebpackPlugin(),
-      new HtmlWebpackPlugin({
-        template: `./${PATHS.dev}/${PATHS.showcase}/pug/main.pug`
-      })
-    ],
+    plugins: getPlugins(),
     module: {
       rules: [
+
+        // Loading Typescript
+        {
+          test: /\.ts$/,
+          exclude: /node_modules/,
+          use: [
+            'babel-loader',
+            'ts-loader'
+          ]
+        },
 
         // Loading Pug
         {
@@ -66,16 +90,6 @@ module.exports = (env) => {
         {
           test: /\.(scss|sass)$/,
           use: getStyleLoaders()
-        },
-
-        // Loading Typescript
-        {
-          test: /\.ts$/,
-          exclude: /node_modules/,
-          use: [
-            'babel-loader',
-            'ts-loader'
-          ]
         }
       ]
     }

@@ -11,7 +11,7 @@ class Model implements zRunner.Model {
   isRange: boolean;
   startValue: number;
   endValue: number;
-  isValuesVisible: boolean;
+  areValuesVisible: boolean;
   valueObserver: zRunner.Observer;
 
   constructor (options: zRunner.Options) {
@@ -23,7 +23,7 @@ class Model implements zRunner.Model {
     this.isRange = options.isRange;
     this.startValue = options.startValue;
     this.endValue = options.endValue;
-    this.isValuesVisible = options.isValuesVisible;
+    this.areValuesVisible = options.areValuesVisible;
 
     this.valueObserver = new Observer();
   }

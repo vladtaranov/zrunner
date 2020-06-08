@@ -3,29 +3,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PATHS = require('./paths');
 
-module.exports = (env) => {
-  const { mode = 'production' } = env;
-  const isProduction = mode === 'production';
-  const isDevelopment = mode === 'development';
-
-  const getStyleLoaders = () => {
-    return [
-      isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-      'css-loader',
-      'postcss-loader',
-      'resolve-url-loader',
-      {
-        loader: 'sass-loader',
-        options: {
-          sourceMap: true
-        }
-      }
-    ];
-  };
-
+module.exports = () => {
   return {
-    mode: isDevelopment ? 'development' : 'production',
-    devtool: isDevelopment && 'inline-source-map',
+    mode: 'production',
     entry: `./${PATHS.dev}/${PATHS.zRunner}/index.ts`,
     output: {
       path: Path.join(process.cwd(), 'dist', PATHS.zRunner),
@@ -35,7 +15,10 @@ module.exports = (env) => {
       extensions: ['.ts', '.js', '.json']
     },
     plugins: [
-      new CleanWebpackPlugin()
+      new CleanWebpackPlugin(),
+      new MiniCssExtractPlugin({
+        filename: 'zRunner.css'
+      })
     ],
     module: {
       rules: [
@@ -53,7 +36,13 @@ module.exports = (env) => {
         // Loading SCSS
         {
           test: /\.(scss|sass)$/,
-          use: getStyleLoaders()
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            'postcss-loader',
+            'resolve-url-loader',
+            'sass-loader'
+          ]
         }
       ]
     }

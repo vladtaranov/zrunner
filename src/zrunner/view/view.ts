@@ -18,9 +18,8 @@ class View implements zRunner.View {
   }
 
   private init () {
-    const div: HTMLElement = View.makeElement(['123', '456']);
-    div.innerHTML = 'TEXT FROM zRUNNER!';
-    this.root.append(div);
+    const track: HTMLElement = View.makeElement(['track']);
+    this.root.append(track);
   }
 }
 
