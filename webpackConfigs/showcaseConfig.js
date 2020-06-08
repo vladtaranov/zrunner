@@ -31,6 +31,7 @@ module.exports = (env) => {
   const getStyleLoaders = () => {
     return [
       isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+      'cache-loader',
       'css-loader',
       'postcss-loader',
       'resolve-url-loader',
@@ -72,6 +73,7 @@ module.exports = (env) => {
           test: /\.ts$/,
           exclude: /node_modules/,
           use: [
+            'cache-loader',
             'babel-loader',
             'ts-loader'
           ]
@@ -81,6 +83,7 @@ module.exports = (env) => {
         {
           test: /\.pug$/,
           use: [
+            'cache-loader',
             'html-loader',
             'pug-html-loader'
           ]
