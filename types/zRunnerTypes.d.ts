@@ -1,3 +1,5 @@
+import Observer from "../src/zrunner/observer/observer";
+
 namespace zRunner {
   interface Controller {
     model: Model,
@@ -5,11 +7,24 @@ namespace zRunner {
   }
 
   interface Model extends Options {
+    length: number,
     valueObserver: Observer
   }
 
   interface View {
-    root: HTMLElement
+    root: HTMLElement,
+    track: HTMLElement,
+    thumb: HTMLElement,
+    thumbStart: HTMLElement,
+    thumbEnd: HTMLElement,
+    range: HTMLElement,
+    thumbNote: HTMLElement,
+    thumbStartNote: HTMLElement,
+    thumbEndNote: HTMLElement,
+
+    onValueChange: Observer,
+    onStartThumbMove: Observer,
+    onEndThumbMove: Observer
   }
 
   type UserOptions = {
@@ -40,7 +55,17 @@ namespace zRunner {
 
   type PublicMethods = {
     setValue: (value: number) => boolean,
+
+    getType: () => string,
+    getMin: () => number,
+    getMax: () => number,
+    getStep: () => number,
     getValue: () => number,
+    getIsRange: () => boolean,
+    getStartValue: () => number,
+    getEndValue: () => number,
+    getAreValuesVisible: () => boolean,
+
     onValueChange: Event
   }
 
