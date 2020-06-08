@@ -4,8 +4,8 @@ namespace zRunner {
     view: View
   }
 
-  interface Model {
-    value: number
+  interface Model extends Options {
+    valueObserver: Observer
   }
 
   interface View {
@@ -13,17 +13,44 @@ namespace zRunner {
   }
 
   type UserOptions = {
-    value?: number
+    type?: string,
+    min?: number,
+    max?: number,
+    step?: number,
+    value?: number,
+    isRange?: boolean,
+    startValue?: number,
+    endValue?: number,
+    areValuesVisible?: boolean
   }
 
   type Options = {
-    value: number
+    type: string,
+    min: number,
+    max: number,
+    step: number,
+    value: number,
+    isRange: boolean,
+    startValue: number,
+    endValue: number,
+    areValuesVisible: boolean
   }
+
+  type OptionsTypes = string | number | boolean
 
   type PublicMethods = {
     setValue: (value: number) => boolean,
-    getValue: () => number
+    getValue: () => number,
+    onValueChange: Event
   }
+
+  interface Observer {
+    observers: Event[],
+    subscribe: (Event) => boolean,
+    trigger: (Event) => boolean
+  }
+
+  type Event = (value?: number | string | boolean) => void;
 }
 
 export default zRunner;

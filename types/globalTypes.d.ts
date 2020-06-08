@@ -4,5 +4,5 @@ interface Window {
 }
 
 interface JQuery {
-  zRunner: (userOptions?: zRunner.UserOptions) => JQuery
+  zRunner: (...any) => JQuery | zRunner.OptionsTypes | zRunner.OptionsTypes[]
 }
