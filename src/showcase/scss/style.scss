@@ -1,0 +1,110 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #e5e5e5;
+  font-size: .9rem;
+  line-height: 1.5;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    Helvetica Neue,
+    sans-serif;
+  color: #333;
+}
+
+.showcase {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 980px;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+  }
+
+  &__title,
+  &__subtitle,
+  &__link {
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    font-weight: bold;
+  }
+
+  &__subtitle {
+    margin-bottom: .25rem;
+    font-size: 1rem;
+    line-height: 1.4;
+    letter-spacing: .2em;
+  }
+
+  &__link {
+    margin-bottom: 1rem;
+    font-weight: bold;
+    color: seagreen;
+    text-decoration: underline;
+    text-decoration-skip: edges;
+
+    &:hover {
+      opacity: .7;
+      transition: all .2s ease-in-out;
+    }
+  }
+
+  &__sample {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+.sample {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 10rem;
+  box-shadow: 0 0 10px #ccc;
+  border: 1px solid #ccc;
+  border-radius: .5rem;
+  padding: 1rem;
+  background: white;
+
+  &__demo {
+    align-self: center;
+    width: 60%;
+  }
+
+  &__settings {
+    align-self: flex-start;
+    width: calc(40% - 2rem);
+  }
+
+  &__setting {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: .5rem;
+
+    &-title {
+      font-size: .8rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    &-field {
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      padding: .2rem .5rem;
+    }
+  }
+}

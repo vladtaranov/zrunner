@@ -1,21 +1,20 @@
+include ./zRunnerSample
+
 doctype html
-html(lang='ru')
+html(lang='en')
   head
     meta(charset='utf-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     title zRunner | Slider Plugin for jQuery
 
   body
-    h1 zRunner Samples
-    .js__runner-sample-1
-      | zRunner 1
+    .showcase__wrapper
+      h1.showcase__title zRunner Demo
+      h2.showcase__subtitle Slider Plugin for jQuery
+      a.showcase__link(
+        href='https://github.com/vladtaranov/zrunner') Docs on Github
 
-    .js__runner-sample-2
-      | zRunner 2
-
-
-    input(
-      name= 'sample-1')
-
-    input(
-      name= 'sample-2')
+      - const ids = [1, 2, 3]
+      each id in ids
+        .showcase__sample
+          +zRunnerSample(id)

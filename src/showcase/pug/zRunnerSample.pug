@@ -1,0 +1,22 @@
+include ./textField
+
+mixin zRunnerSample(id)
+  section.sample
+    div(class= `sample__demo js__zRunner-sample-${id}`)
+
+    div(class= `sample__settings js__zRunner-settings-${id}`)
+
+      +textField({
+        name: 'min',
+        title: 'Min',
+      })
+
+      +textField({
+        name: 'max',
+        title: 'Max',
+      })
+
+      +textField({
+        name: 'step',
+        title: 'Step',
+      })

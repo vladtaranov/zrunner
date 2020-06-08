@@ -1,0 +1,8 @@
+mixin textField(options)
+  label.sample__setting
+    .sample__setting-title #{options.title}
+
+    input.sample__setting-field(
+      name= options.name
+      inputMode= options.inputMode || 'number'
+      placeholder= options.placeholder || '')
