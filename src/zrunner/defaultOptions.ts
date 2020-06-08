@@ -1,4 +1,4 @@
-import constants from './zrunner/constants';
+import constants from './constants';
 
 export default {
   type: constants.HORIZONTAL,

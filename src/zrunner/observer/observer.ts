@@ -1,15 +1,15 @@
-interface Observer {
-  observers: Event[]
-}
+import { boundMethod } from 'autobind-decorator';
+import zRunner from '../../../types/zRunnerTypes';
 
-type Event = (value?: number | string | boolean) => void;
+class Observer implements zRunner.Observer {
+  observers: zRunner.Event[];
 
-class Observer {
   constructor () {
     this.observers = [];
   }
 
-  subscribe (event: Event): boolean {
+  @boundMethod
+  subscribe (event: zRunner.Event): boolean {
     if (!this.observers.includes(event)) {
       this.observers.push(event);
       return true;
@@ -17,7 +17,8 @@ class Observer {
     return false;
   }
 
-  unsubscribe (event: Event): boolean {
+  @boundMethod
+  unsubscribe (event: zRunner.Event): boolean {
     const funcIdx: number = this.observers.indexOf(event);
     if (funcIdx >= 0) {
       this.observers.splice(funcIdx, 1);
@@ -26,6 +27,7 @@ class Observer {
     return false;
   }
 
+  @boundMethod
   trigger (data?: number | string | boolean): boolean {
     if (this.observers.length < 1) return false;
     this.observers.forEach((observer) => {

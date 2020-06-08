@@ -1,3 +1,4 @@
+import { boundMethod } from 'autobind-decorator';
 import zRunner from '../../../types/zRunnerTypes';
 import Model from '../model/model';
 import View from '../view/view';
@@ -11,6 +12,7 @@ class Controller implements zRunner.Controller {
     this.view = new View(root);
   }
 
+  @boundMethod
   getPublicMethods (): zRunner.PublicMethods {
     return this.model.getPublicMethods();
   }
