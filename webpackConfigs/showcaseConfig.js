@@ -13,7 +13,8 @@ module.exports = (env) => {
     const plugin = [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-        template: `./${PATHS.dev}/${PATHS.showcase}/pug/main.pug`
+        template: `./${PATHS.dev}/${PATHS.showcase}/pug/main.pug`,
+        favicon: `./${PATHS.dev}/${PATHS.showcase}/assets/favicon/favicon.png`
       })
     ];
 
