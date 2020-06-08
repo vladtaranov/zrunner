@@ -1,7 +1,7 @@
 import { boundMethod } from 'autobind-decorator';
 import zRunner from '../../../types/zRunnerTypes';
 import Observer from '../observer/observer';
-import { getValueInPercents } from '../utils';
+import { makeElement, getValueInPercents } from '../utils';
 
 class View implements zRunner.View {
   root: HTMLElement;
@@ -22,14 +22,6 @@ class View implements zRunner.View {
     this.root = root;
 
     this.init();
-  }
-
-  private static makeElement (classes: string[]): HTMLElement {
-    const elem: HTMLElement = document.createElement('div');
-    classes.forEach((style) => {
-      elem.classList.add(style);
-    });
-    return elem;
   }
 
   @boundMethod
@@ -93,14 +85,14 @@ class View implements zRunner.View {
   }
 
   private init (): void {
-    this.track = View.makeElement(['zrunner__track']);
-    this.thumb = View.makeElement(['zrunner__thumb']);
-    this.thumbStart = View.makeElement(['zrunner__thumb']);
-    this.thumbEnd = View.makeElement(['zrunner__thumb']);
-    this.range = View.makeElement(['zrunner__range']);
-    this.thumbNote = View.makeElement(['zrunner__thumb-note']);
-    this.thumbStartNote = View.makeElement(['zrunner__thumb-note']);
-    this.thumbEndNote = View.makeElement(['zrunner__thumb-note']);
+    this.track = makeElement(['zrunner__track']);
+    this.thumb = makeElement(['zrunner__thumb']);
+    this.thumbStart = makeElement(['zrunner__thumb']);
+    this.thumbEnd = makeElement(['zrunner__thumb']);
+    this.range = makeElement(['zrunner__range']);
+    this.thumbNote = makeElement(['zrunner__thumb-note']);
+    this.thumbStartNote = makeElement(['zrunner__thumb-note']);
+    this.thumbEndNote = makeElement(['zrunner__thumb-note']);
 
     this.onValueChange = new Observer();
     this.onStartThumbMove = new Observer();
