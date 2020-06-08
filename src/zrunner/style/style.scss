@@ -1,6 +1,84 @@
+$gradient: linear-gradient(180deg, #6fcf97 0%, #66d2ed 100%);
+$trackThickness: 6px;
+$thumbDiameter: 12px;
+$thumbBorder: 2px;
+
+$containerDiameter: $thumbDiameter + $thumbBorder * 4;
+$thumbDiameterWithBorder: $thumbDiameter + $thumbBorder * 2;
+
 .zrunner {
   &__track {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    background: white;
+    height: $trackThickness * 2;
+
+    &::before {
+      content: "";
+      box-sizing: border-box;
+      display: block;
+      width: 100%;
+      height: $trackThickness;
+      border: 1px solid rgba(31, 32, 65, .25);
+      border-radius: $trackThickness / 2;
+      background: white;
+    }
+  }
+
+  &__thumb {
+    position: absolute;
+    z-index: 10;
+    top: calc(50% - #{$containerDiameter / 2});
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $containerDiameter;
+    height: $containerDiameter;
+    border-radius: $containerDiameter / 2;
+    transform: translateX(-$containerDiameter / 2);
+    cursor: pointer;
+    user-select: none;
+
+    &::before {
+      content: "";
+      box-sizing: border-box;
+      display: block;
+      width: $thumbDiameterWithBorder;
+      height: $thumbDiameterWithBorder;
+      border: $thumbBorder solid white;
+      border-radius: $thumbDiameterWithBorder / 2;
+      background: $gradient;
+    }
+
+    &-note {
+      position: absolute;
+      bottom: 100%;
+      z-index: 15;
+      border: 1px solid rgba(31, 32, 65, .25);
+      border-radius: .2em;
+      padding: .2em;
+      background: white;
+      line-height: 1;
+    }
+
+    &.is-invisible {
+      visibility: hidden;
+    }
+
+    &:hover {
+      opacity: .75;
+      transition: all .2s ease-in-out;
+    }
+  }
+
+  &__range {
+    position: absolute;
+    z-index: 5;
+    top: calc(50% - #{$trackThickness / 2});
+    height: $trackThickness;
+    border-radius: $trackThickness / 2;
+    background: $gradient;
   }
 }
